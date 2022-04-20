@@ -8,34 +8,77 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/qr_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:text="Tara"/>
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:id="@+id/l1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/qr_button"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView">
-    </TextView>
+        <Button
+            android:id="@+id/qr_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+            android:layout_centerHorizontal="true"
+            android:text="Tara"/>
 
-    <WebView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/qr_button"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:id="@+id/textView">
+        </TextView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/textView"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/black">
+        </View>
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/webview"
-        android:visibility="invisible"
-        android:layout_below="@id/textView"
-        android:layout_marginTop="2dp">
-    </WebView>
+        android:layout_below="@id/l1"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/webview"
+                android:visibility="invisible"
+                android:layout_below="@id/textView">
+            </WebView>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:id="@+id/progress"
+                android:layout_gravity="center">
+            </ProgressBar>
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
 
 
 

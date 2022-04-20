@@ -3,10 +3,13 @@ package com.ogulcankacar.qrscanner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button scanButton;
     private TextView urlView;
     private WebView webView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +35,35 @@ public class MainActivity extends AppCompatActivity {
         scanButton = findViewById(R.id.qr_button);
         urlView = findViewById(R.id.textView);
         webView = findViewById(R.id.webview);
-        webView.setWebViewClient(new WebViewClient());
+        progressBar = findViewById(R.id.progress);
+        webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                Toast.makeText(MainActivity.this, "Hata: " + error.toString() + "\n" + error.getDescription(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
+                progressBar.setVisibility(View.VISIBLE);
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE).initiateScan();
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES)
+                        .setPrompt("Scan a QR Code")
+                        .setOrientationLocked(false)
+                        .setBeepEnabled(true)
+                        .initiateScan();
 
 
             }
@@ -54,24 +78,21 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
+
         if (result != null) {
 
-            urlView.setText(result.getContents().toString());
-            if (result.getContents().isEmpty()) {
-                urlView.setText("İçerik boşş");
+            if (result.getContents() == null) {
+                Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
+                urlView.setVisibility(View.VISIBLE);
                 urlView.setText(result.getContents().toString());
                 openWebView(result.getContents().toString());
-
-
             }
-
 
         }
 
 
     }
-
 
 
     //open browser
@@ -93,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             webView.loadUrl(url);
+
         } catch (Exception e) {
             Toast.makeText(this, "Bir hata oluştu", Toast.LENGTH_SHORT).show();
 
@@ -101,5 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+
+    }
 }//Main

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/oglcn/AndroidStudioProjects/QRScanner/app/src/main/res/drawable/button_background.xml" value="0.182" />
+        <entry key="..\:/Users/oglcn/AndroidStudioProjects/QRScanner/app/src/main/res/layout/activity_any_orientation_capture.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/oglcn/AndroidStudioProjects/QRScanner/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
       </map>
     </option>
