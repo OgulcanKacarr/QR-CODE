@@ -12,15 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
+        android:layout_above="@id/l1"
+        android:background="@color/black"
         android:gravity="center"
         android:id="@+id/l1">
 
         <Button
             android:id="@+id/qr_button"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
+            android:textColor="@color/red"
+            android:textSize="25sp"
             android:background="@drawable/button_background"
             android:layout_centerHorizontal="true"
             android:text="Tara"/>
@@ -30,7 +33,8 @@
             android:layout_height="wrap_content"
             android:text="test"
             android:textSize="15sp"
-            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:textColor="@color/green"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/qr_button"
             android:visibility="gone"
@@ -43,7 +47,7 @@
             android:layout_below="@id/textView"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
-            android:background="@color/black">
+            android:background="@color/blue">
         </View>
     </LinearLayout>
 
@@ -53,6 +57,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/l1"
         android:layout_marginTop="2dp"
+        android:id="@+id/l2"
         android:orientation="vertical">
         <FrameLayout
             android:layout_width="match_parent"

@@ -1,6 +1,8 @@
 package com.ogulcankacar.qrscanner;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebResourceError;
@@ -13,11 +15,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView urlView;
     private WebView webView;
     private ProgressBar progressBar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,43 +64,77 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 5);
+                }
 
                 progressBar.setVisibility(View.VISIBLE);
+                ScanOptions options = new ScanOptions();
+                options.setDesiredBarcodeFormats(ScanOptions.ALL_CODE_TYPES);
+                options.setPrompt("Scan a barcode");
+                options.setCameraId(0);  // Use a specific camera of the device
+                options.setBeepEnabled(true);
+                options.setBarcodeImageEnabled(true);
+                barcodeLauncher.launch(options);
+
+                /*
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES)
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
                         .setPrompt("Scan a QR Code")
-                        .setOrientationLocked(false)
+                        .setOrientationLocked(true)
                         .setBeepEnabled(true)
                         .initiateScan();
+
+                 */
 
 
             }
         });
 
+        ScanOptions options = new ScanOptions();
+        options.setOrientationLocked(false);
 
     }//OnCreate
 
-
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 5) {
 
-        if (result != null) {
+            IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
 
-            if (result.getContents() == null) {
-                Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                urlView.setVisibility(View.VISIBLE);
-                urlView.setText(result.getContents().toString());
-                openWebView(result.getContents().toString());
+
+            if (result != null) {
+                if (result.getContents() == null) {
+                    Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+                } else {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    urlView.setText(result.getContents().toString());
+                    openWebView(result.getContents().toString());
+                }
+
             }
-
         }
 
 
     }
+*/
+
+    private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
+            result -> {
+                if(result.getContents() == null) {
+                    Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+                } else {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    urlView.setVisibility(View.VISIBLE);
+                    urlView.setText(result.getContents().toString());
+                    openWebView(result.getContents().toString());
+                }
+            });
 
 
     //open browser
