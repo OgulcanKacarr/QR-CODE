@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QR Scanner</string>
+    <string name="fix" translatable="false">"something went wrong "</string>
+    <string name="Cancelled" translatable="false">Cancelled</string>
+    <string name="scanCamera" translatable="false">Scan a Barcode/QR Code</string>
+    <string name="scan" translatable="false">Scan</string>
+</resources>

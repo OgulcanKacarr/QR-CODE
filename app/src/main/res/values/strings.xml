@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">QR Scanner</string>
+    <string name="app_name" translatable="false">QR Scanner</string>
+    <string name="scanCamera" translatable="false">Barcode/QR Code\'u Tara</string>
+    <string name="Cancelled" translatable="false">İptal edildi</string>
+    <string name="fix" translatable="false">Bir hata oluştu</string>
+    <string name="scan" translatable="false">Tara</string>
 </resources>

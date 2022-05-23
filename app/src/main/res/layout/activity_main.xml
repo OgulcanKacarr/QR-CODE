@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,38 +7,43 @@
 
 
     <LinearLayout
+        android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_above="@id/l1"
         android:background="@color/black"
         android:gravity="center"
-        android:id="@+id/l1">
+        android:orientation="vertical">
 
-        <Button
+
+        <ImageView
             android:id="@+id/qr_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:textColor="@color/red"
-            android:textSize="25sp"
-            android:background="@drawable/button_background"
-            android:layout_centerHorizontal="true"
-            android:text="Tara"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:src="@drawable/qr">
+
+        </ImageView>
+
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/qr_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:text="test"
+            android:textColor="@color/green"
             android:textSize="15sp"
             android:textStyle="italic"
-            android:textColor="@color/green"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/qr_button"
-            android:visibility="gone"
-            android:layout_marginTop="10dp"
-            android:id="@+id/textView">
+            android:visibility="gone">
+
         </TextView>
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="5dp"
@@ -48,44 +51,51 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:background="@color/blue">
+
         </View>
+
     </LinearLayout>
 
 
     <LinearLayout
+        android:id="@+id/l2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/adView"
         android:layout_below="@id/l1"
         android:layout_marginTop="2dp"
-        android:id="@+id/l2"
         android:orientation="vertical">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <WebView
+                android:id="@+id/webview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/webview"
-                android:visibility="invisible"
-                android:layout_below="@id/textView">
+                android:layout_below="@id/textView"
+                android:visibility="invisible">
+
             </WebView>
+
             <ProgressBar
+                android:id="@+id/progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:id="@+id/progress"
-                android:layout_gravity="center">
-            </ProgressBar>
+                android:layout_gravity="center"
+                android:visibility="invisible"></ProgressBar>
         </FrameLayout>
-
-
 
 
     </LinearLayout>
 
-
-
-
-
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-4310209378038401/6195915050"></com.google.android.gms.ads.AdView>
 </RelativeLayout>
