@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/qr_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:background="@color/white"
@@ -37,12 +37,10 @@
             android:layout_below="@id/qr_button"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="test"
             android:textColor="@color/green"
-            android:textSize="15sp"
-            android:textStyle="italic"
-            android:visibility="gone">
-
+            android:textSize="30sp"
+            android:visibility="gone"
+            android:textStyle="italic">
         </TextView>
 
 
@@ -53,7 +51,6 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:background="@color/blue">
-
         </View>
 
     </LinearLayout>
@@ -107,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:adUnitId="ca-app-pub-4310209378038401/6195915050">
     </com.google.android.gms.ads.AdView>
 </RelativeLayout>

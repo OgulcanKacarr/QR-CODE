@@ -37,13 +37,10 @@
             android:layout_below="@id/qr_button"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="test"
             android:textColor="@color/green"
+            android:visibility="gone"
             android:textSize="15sp"
-            android:textStyle="italic"
-            android:visibility="gone">
-
-        </TextView>
+            android:textStyle="italic"></TextView>
 
 
         <View
@@ -52,9 +49,7 @@
             android:layout_below="@id/textView"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
-            android:background="@color/blue">
-
-        </View>
+            android:background="@color/blue"></View>
 
     </LinearLayout>
 
@@ -100,14 +95,12 @@
 
     </LinearLayout>
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-4310209378038401/6195915050">
-    </com.google.android.gms.ads.AdView>
+        ads:adUnitId="ca-app-pub-4310209378038401/6195915050"></com.google.android.gms.ads.AdView>
 </RelativeLayout>
