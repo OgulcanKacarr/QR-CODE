@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/qr_button"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:background="@color/white"

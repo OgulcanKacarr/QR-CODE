@@ -4,4 +4,10 @@
     <string name="Cancelled" translatable="false">İptal edildi</string>
     <string name="fix" translatable="false">Bir hata oluştu</string>
     <string name="scan" translatable="false">Tara</string>
+    <string name="permission" translatable="false">İzin gerekli</string>
+    <string name="give_permission" translatable="false">İzin ver</string>
+    <string name="notFoundWP" translatable="false">Whatsapp yüklü değil!</string>
+    <string name="notConnectionNetwork" translatable="false">İnternet bağlantısı yok!</string>
+    <string name="network" translatable="false">Network!</string>
+    <string name="exit" translatable="false">Çıkış!</string>
 </resources>

@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.CAMERA)) {
-                    Snackbar.make(view1, "İzin gerekli", Snackbar.LENGTH_INDEFINITE)
-                            .setAction("İzin ver", new View.OnClickListener() {
+                    Snackbar.make(view1, R.string.permission, Snackbar.LENGTH_INDEFINITE)
+                            .setAction(R.string.give_permission, new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     //izin al
@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
                                 if (result == null) {
                                     Toast.makeText(MainActivity.this, R.string.Cancelled, Toast.LENGTH_LONG).show();
                                     activityMainBinding.progress.setVisibility(View.INVISIBLE);
@@ -155,10 +154,10 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         startActivity(whatsappIntent);
                     } catch (ActivityNotFoundException ex) {
-                        Toast.makeText(getApplicationContext(), "hata, gönderim başarısız", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.fix, Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Whatsapp Yüklü Değil", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.notFoundWP, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -222,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Snackbar.make(activityMainBinding.view, "İzin gerekli", Snackbar.LENGTH_INDEFINITE)
+                    Snackbar.make(activityMainBinding.view, R.string.permission, Snackbar.LENGTH_INDEFINITE)
                             .setAction("İzin ver", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -301,10 +300,10 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Hata");
-            builder.setMessage("Lütfen internet bağlantınızı kontrol ediniz!");
+            builder.setTitle(R.string.network);
+            builder.setMessage(R.string.notConnectionNetwork);
             builder.setCancelable(false);
-            builder.setPositiveButton("Çıkış", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
                     finish();

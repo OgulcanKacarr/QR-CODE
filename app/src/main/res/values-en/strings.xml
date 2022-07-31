@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">QR Scanner</string>
-    <string name="fix" translatable="false">"something went wrong "</string>
+    <string name="fix" translatable="false">"Something went wrong "</string>
     <string name="Cancelled" translatable="false">Cancelled</string>
     <string name="scanCamera" translatable="false">Scan a Barcode/QR Code</string>
     <string name="scan" translatable="false">Scan</string>
+    <string name="permission" translatable="false">Permission needed</string>
+    <string name="give_permission" translatable="false">Give permission</string>
+    <string name="notFoundWP" translatable="false">Whatsapp is not found!</string>
+    <string name="notConnectionNetwork" translatable="false">Not connected!</string>
+    <string name="network" translatable="false">Network!</string>
+    <string name="exit" translatable="false">Exit!</string>
 </resources>
